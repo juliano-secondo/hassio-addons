@@ -1,0 +1,26 @@
+#!/usr/bin/with-contenv bashio
+
+CONFIG_PATH=/data/options.json
+
+#SUPERVISOR_TOKEN=$(bashio::config 'token')
+SERVERS=$(bashio::config 'servers | join(" ")')
+CRONS=$(bashio::config 'crons | join(",")')
+CRONS2=$(echo "$CRONS" | sed 's/ /_/g')
+
+echo "SERVERS=$SERVERS" >> /etc/environment
+echo "SUPERVISOR_TOKEN=$SUPERVISOR_TOKEN" >> /etc/environment
+
+for CRON in `echo $CRONS2 | sed 's/,/ /g'`;
+do
+    CRON2=$(echo "$CRON" | sed 's/_/ /g')
+    echo "$CRON2 /speedtestcli.sh > /proc/1/fd/1" >> /etc/cron.d/speedtestcli
+done
+
+chmod 0644 /etc/cron.d/speedtestcli
+crontab /etc/cron.d/speedtestcli
+
+echo "[run] starting cron"
+
+cron -f
+
+

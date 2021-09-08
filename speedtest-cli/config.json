@@ -1,0 +1,20 @@
+{
+  "name": "SpeedTestCli",
+  "version": "1.51",
+  "slug": "speedtestcli",
+  "description": "Speedtest using speedtest-cli on cron addon",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "application",
+  "boot": "auto",
+  "homeassistant_api": "true",
+  "map": ["config:rw"],
+  "options": {
+    "servers": [null],
+    "crons": [null]
+  },
+  "schema": {
+    "servers": ["int"],
+    "crons": ["str"]
+  }
+}
+
