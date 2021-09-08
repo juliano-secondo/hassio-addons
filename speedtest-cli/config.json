@@ -1,6 +1,6 @@
 {
   "name": "SpeedTestCli",
-  "version": "1.51",
+  "version": "1.52",
   "slug": "speedtestcli",
   "description": "Speedtest using speedtest-cli on cron addon",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -17,4 +17,3 @@
     "crons": ["str"]
   }
 }
-

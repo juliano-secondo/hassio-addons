@@ -22,7 +22,9 @@ do
         echo "$(date) - DL: $DOWNLOADVALUE, UP: $UPLOADVALUE, PING: $(echo $JSON | jq '.ping.latency')"
 
         curl -s -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" http://supervisor/core/api/states/sensor.speedtestcli_download -d "${DOWNLOAD}"
+        sleep 2
         curl -s -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" http://supervisor/core/api/states/sensor.speedtestcli_upload -d "${UPLOAD}"
+        sleep 2
         curl -s -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" http://supervisor/core/api/states/sensor.speedtestcli_ping -d "${PING}"
         exit 0
     else

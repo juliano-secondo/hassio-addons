@@ -6,4 +6,5 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install curl -y && curl
 RUN /usr/bin/speedtest --accept-license --accept-gdpr
 COPY rootfs /
 RUN chmod +x /speedtestcli.sh
+RUN ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
